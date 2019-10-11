@@ -6,48 +6,35 @@
 /*   By: vbukhval <vbukhval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 11:18:49 by vbukhval          #+#    #+#             */
-/*   Updated: 2019/10/11 13:24:46 by vbukhval         ###   ########.fr       */
+/*   Updated: 2019/10/11 16:35:50 by vbukhval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count(char *str)
+char	*ft_strtrim(char const *s)
 {
-	int i;
-	int start;
-
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
-		i++;
-	i--;
-	if (i == -1 && str[0] != ' ' && str[0] != '\n' && str[0] != '\t')
-		i = 0;
-	if (str[i + 1] == '\0')
-		i = 0;
-	start = i;
-	while (str[i])
-		i++;
-	if (str[i - 1] == ' ' || str[i - 1] == '\n' || str[i - 1] == '\t')
-		i--;
-	while ((str[i] == ' ' || str[i] == '\n' || str[i] == '\t') && i != 0)
-		i--;
-	return (i - start);
-}
-
-char		*ft_strtrim(char const *s)
-{
-	char	*str;
 	int		i;
+	int		len;
+	char	*str;
 
-	i = 0;
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	if (!(str = (char *)malloc(sizeof(char) * (count((char *)s) + 1))))
+	len = ft_strlen(s);
+	while (s[len - 1] == ' ' || s[len - 1] == '\t' || s[len - 1] == '\n')
+		len--;
+	i = -1;
+	while (s[++i] == ' ' || s[i] == '\t' || s[i] == '\n')
+		len--;
+	if (len <= 0)
+		len = 0;
+	str = (char*)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 		return (NULL);
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
-	str = ft_strncpy(str, s + i, count((char *)s));
-	str[count((char *)s)] = '\0';
+	s += i;
+	i = -1;
+	while (++i < len)
+		str[i] = *s++;
+	str[i] = '\0';
 	return (str);
 }
