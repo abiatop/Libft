@@ -6,7 +6,7 @@
 /*   By: vbukhval <vbukhval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:33:42 by vbukhval          #+#    #+#             */
-/*   Updated: 2019/10/11 14:08:08 by vbukhval         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:54:29 by vbukhval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int				ft_countwords(char *str, char sep);
 int				ft_isblank(int c);
 int				ft_max(int a, int b);
 int				ft_islower(int c);
-int				ft_isdigit(int c);
 int				ft_isupper(int c);
 int				ft_min(int a, int b);
 
